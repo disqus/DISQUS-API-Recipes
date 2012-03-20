@@ -12,9 +12,6 @@
 	// setup curl to make a call to the endpoint
 	$session = curl_init($endpoint);
 
-	// start dialing
-	$ch = curl_init();
-
 	// indicates that we want the response back rather than just returning a "TRUE" string
 	curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
 
