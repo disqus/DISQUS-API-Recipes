@@ -11,6 +11,7 @@ A cookbook of common recipes to help expedite your development process when usin
 5. Create a guest comment: create-guest-comment.php (posts/create)
 6. Add users to the whitelist via CSV file: add_to_whitelist.php (whitelists/add)
 7. Test SSO with a single user: sso_test_recipe.php
+8. Closing a post using a single access token (threads/close)
 
 ## Requirements
 
