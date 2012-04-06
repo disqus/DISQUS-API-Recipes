@@ -9,6 +9,9 @@ A cookbook of common recipes to help expedite your development process when usin
 3. Get a thread's details: get-thread-details.php (threads/details)
 4. List all threads created between a given date and now: list-all-threads-between-date-and-now.php (threads/list)
 5. Create a guest comment: create-guest-comment.php (posts/create)
+6. Add users to the whitelist via CSV file: add_to_whitelist.php (whitelists/add)
+7. Test SSO with a single user: sso_test_recipe.php
+8. Closing a post using a single access token: single_access_token.php (threads/close)
 
 ## Requirements
 
