@@ -1,13 +1,13 @@
-/// Description:
-/// This is an example of how to generate the remote_auth_s3 payload in C#, used in conjunction with Disqus single sign-on (SSO)
-/// For documentation on how SSO works with Disqus, see this guide: http://docs.disqus.com/developers/sso/
-/// 
-/// Prerequisites:
-/// You need the the Jayrock JSON library, which can be used in all versions of .NET. 
-/// Download it here: http://code.google.com/p/jayrock/
-///
-/// Usage:
-/// The output is the hmacString variable, which is then put in place inline with the Disqus Javascript (remote_auth_s3).
+// Description:
+// This is an example of how to generate the remote_auth_s3 payload in C#, used in conjunction with Disqus single sign-on (SSO)
+// For documentation on how SSO works with Disqus, see this guide: http://docs.disqus.com/developers/sso/
+// 
+// Prerequisites:
+// You need the the Jayrock JSON library, which can be used in all versions of .NET. 
+// Download it here: http://code.google.com/p/jayrock/
+//
+// Usage:
+// The output is the hmacString variable, which is then put in place inline with the Disqus Javascript (remote_auth_s3).
  
 protected void Page_Load(object sender, EventArgs e)
 {
