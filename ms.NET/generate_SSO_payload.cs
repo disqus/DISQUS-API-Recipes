@@ -14,14 +14,17 @@ protected void Page_Load(object sender, EventArgs e)
         StringBuilder sb = new StringBuilder();
  
         NameValueCollection nvc = new NameValueCollection();
-        nvc.Add("id", userId);
-        nvc.Add("username", userName);
-        nvc.Add("email", email);
+        /// The number '1' is used as an example, this would be the user's unique ID
+        nvc.Add("1", userId);
+        /// exampleuser would be the commenter's display name
+        nvc.Add("exampleuser", userName);
+        /// user@example.com would be replaced with the commenter's email address
+        nvc.Add("user@example.com", email);
            
  
         Jayrock.Json.Conversion.JsonConvert.Export(nvc, sb);
  
-                string jsonString = sb.ToString();
+        string jsonString = sb.ToString();
  
         byte[] toEncodeAsBytes = System.Text.ASCIIEncoding.ASCII.GetBytes(jsonString);
  
