@@ -9,10 +9,11 @@ A cookbook of common recipes to help expedite your development process when usin
 * Get a thread's details: /php/get-thread-details.php
 * List a forum's 100 most active users and their comment counts: /php/list-100-most-active-users.php
 * Get an SSO account's username: /php/get-sso-username.php
+* Create a guest comment: create-guest-comment.php
 
 ### Intermediate
 
-* Create a guest comment: create-guest-comment.php
+* List all replies to a parent comment: /php/list-all-replies-to-a-parent.php
 * List all threads created between a given date and now: /php/list-all-threads-between-date-and-now.php
 * Add users to the whitelist via CSV file: /php/add_to_whitelist.php
 * Close a thread using a single access token: /php/single_access_token.php
