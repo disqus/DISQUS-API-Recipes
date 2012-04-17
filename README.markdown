@@ -20,7 +20,7 @@ A cookbook of common recipes to help expedite your development process when usin
 * Three-button test script for DISQUS.reset (AJAX reset method): /html/disqus_reset.html
 
 ### Advanced
-* Test SSO with a single user: sso_test_recipe.php
+* Test SSO with a single user: /php/sso_test_recipe.php
 * Generate an SSO remote_auth_s3 payload in C# .NET: /ASP.NET/generate_SSO_payload.cs
 * (1/2) Get a forum's most popular threads and write to a cache file: /php/get_and_write_popular_threads_to_cache.php
 * (2/2) Get popular threads from cache file and display them: /php/get_popular_threads_from_cache.php
