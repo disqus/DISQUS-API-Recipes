@@ -18,6 +18,7 @@ A cookbook of common recipes to help expedite your development process when usin
 * Add users to the whitelist via CSV file: /php/add_to_whitelist.php
 * Close a thread using a single access token: /php/single_access_token.php
 * Three-button test script for DISQUS.reset (AJAX reset method): /html/disqus_reset.html
+* OAuth example: /oauth/oauth-test.php
 
 ### Advanced
 * Test SSO with a single user: /php/sso_test_recipe.php
