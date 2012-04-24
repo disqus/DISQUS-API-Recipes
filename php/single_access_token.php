@@ -9,12 +9,11 @@ $access_token = "<access_token>";
 
 $url = 'https://disqus.com/api/3.0/threads/close.json';
 $fields = array(
-						'access_token'=>urlencode($access_token),
-						'api_key'=>urlencode(DISQUS_PUBLIC_KEY),
-						'api_secret'=>urlencode(DISQUS_SECRET_KEY),
-						'thread'=>urlencode($thread_id)
-						
-				);
+	'access_token'=>urlencode($access_token),
+	'api_key'=>urlencode(DISQUS_PUBLIC_KEY),
+	'api_secret'=>urlencode(DISQUS_SECRET_KEY),
+	'thread'=>urlencode($thread_id)	
+);
 
 //url-ify the data for the POST
 foreach($fields as $key=>$value) { $fields_string .= $key.'='.$value.'&'; }
