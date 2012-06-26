@@ -32,7 +32,6 @@ $hmac = hash_hmac('sha1', "$message $timestamp", DISQUS_SECRET_KEY);
         
         /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
         var disqus_shortname = 'shmeriously'; // required: replace example with your forum shortname
-        var disqus_developer = 1;
 
         /* * * DON'T EDIT BELOW THIS LINE * * */
         (function() {
