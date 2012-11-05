@@ -14,12 +14,11 @@ $endpoint = 'https://disqus.com/api/3.0/forums/listPosts?api_secret='.$apikey.'&
 
 $num_results_checked = 0;
 $cursorMaxCount=0;
-$totalThreads=0;
-$closedThreads=0;
+$num_deleted_posts = 0;
 list100Threads($endpoint,$cursor,$cursorMaxCount,$limit);
 
 function list100Threads($endpoint,$cursor,$cursorMaxCount,$limit) {
-	global $apikey, $totalThreads, $closedThreads, $num_results_checked;
+	global $apikey, $cursorMaxCount, $num_deleted_posts, $num_results_checked;
 	// create a new cURL resource
 	$session = curl_init($endpoint.$cursor);
 
@@ -77,6 +76,7 @@ function list100Threads($endpoint,$cursor,$cursorMaxCount,$limit) {
 				$data = curl_exec($threadDetailsSession);
 				curl_close($threadDetailsSession);
 				echo '<h4>Same comment by the same author. Post '.$posts[$post_checked_against] -> id.' was deleted.</h4>';
+				$num_deleted_posts++;
 				}
 				//Cycling through the posts being checked against.
 				$post_checked_against++;
@@ -104,6 +104,6 @@ function list100Threads($endpoint,$cursor,$cursorMaxCount,$limit) {
 	}
 }
 	//Telling us that we're done.
-	echo '<h4>Done processing. '.$num_results_checked.' posts checked.</h4>';
+	echo '<h4>Done processing. '.$num_results_checked.' posts checked. '.$num_deleted_posts.' deleted.</h4>';
 
 ?>
