@@ -10,6 +10,7 @@ A cookbook of common recipes to help expedite your development process when usin
 * List a forum's 100 most active users and their comment counts: /php/list-100-most-active-users.php
 * Get an SSO account's username: /php/get-sso-username.php
 * Create a guest comment: /php/create-guest-comment.php
+* Locates and deletes duplicate comments: /php/deduping_script.php
 
 ### Intermediate
 
