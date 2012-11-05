@@ -59,7 +59,7 @@ function list100Threads($endpoint,$cursor,$cursorMaxCount,$limit) {
 		//Start from the response directly after the first.
 		$post_checked_against = 1;
 
-		//Cycle through the responses: Run while the we're under the response limit and we have valid Post IDs to check against.
+		//Cycle through the responses: Run while we're under the response limit and we have valid Post IDs to check against.
 		while ($post_checked < $limit && $posts[$post_checked_against]->id !== NULL){
 			echo '<h3>Post being checked - '.$post_checked_against.'</h3>';
 
