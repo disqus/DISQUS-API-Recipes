@@ -79,6 +79,17 @@ namespace sso_payload_example
             return GeneratePayload(serializedUserData);
         }
 
+        /// <summary>
+        /// Method to log out a user from SSO
+        /// </summary>
+        /// <returns>A signed, empty payload</returns>
+        public string LogoutUser()
+        {
+            var userdata = new { };
+            string serializedUserData = new JavaScriptSerializer().Serialize(userdata);
+            return GeneratePayload(serializedUserData);
+        }
+
         // Take user data and finish generating payload
         private string GeneratePayload(string serializedUserData)
         {
