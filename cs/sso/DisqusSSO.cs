@@ -14,6 +14,20 @@ namespace sso_payload_example
         /// 
         /// Usage:
         /// After inputting user data, a final payload will be generated which you use for the javascript variable 'remote_auth_s3'
+        /// 
+        /// Markup:
+        /// ------
+        /// var disqus_config = function () {
+        ///         this.page.remote_auth_s3 = '<%= Payload %>';
+        ///         this.page.api_key = 'DISQUS_PUBLIC_KEY';
+        ///     }
+        /// 
+        /// Code-behind:
+        /// -----------
+        /// DisqusSSO sso = new DisqusSSO();
+        /// sso.DisqusApiSecret = "DISQUS_SECRET_KEY";
+        /// Payload = sso.GetDisqusPayload("test1", "Charlie Chaplin", "charlie@example.com");
+        /// 
         /// </summary>
 
         /// Disqus API secret key can be obtained here: http://disqus.com/api/applications/
