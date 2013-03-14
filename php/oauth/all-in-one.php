@@ -1,5 +1,8 @@
 <?php
 
+//This is a all-in-one example of API authentication and making API calls using OAuth
+//More information on using OAuth with Disqus can be found here: http://disqus.com/api/docs/auth/
+
 error_reporting(E_ALL ^ E_NOTICE) ;
 
 $PUBLIC_KEY = "<API_KEY>";
@@ -10,7 +13,7 @@ $endpoint = 'https://disqus.com/api/oauth/2.0/authorize?';
 $client_id = $PUBLIC_KEY;
 $scope = 'read,write';
 $response_type = 'code';
-$redirect_uri = 'http://localhost/~helpdesk3/oauth.php';
+$redirect_uri = 'http://localhost/~helpdesk3/all-in-one.php';
 
 $auth_url = $endpoint.'&client_id='.$client_id.'&scope='.$scope.'&response_type='.$response_type.'&redirect_uri='.$redirect_uri;
 
@@ -66,7 +69,7 @@ echo "</p>";
 
 $access_token = $auth_results->access_token;
 
-echo "<p><h3>The access token you'll use in authenticated API calls:</h3>";
+echo "<p><h3>The access token you'll use in API calls:</h3>";
 echo $access_token;
 echo "</p>";
 
