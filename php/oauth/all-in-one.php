@@ -13,9 +13,10 @@ $endpoint = 'https://disqus.com/api/oauth/2.0/authorize?';
 $client_id = $PUBLIC_KEY;
 $scope = 'read,write';
 $response_type = 'code';
-$redirect_uri = 'http://localhost/~helpdesk3/all-in-one.php';
 
-$auth_url = $endpoint.'&client_id='.$client_id.'&scope='.$scope.'&response_type='.$response_type.'&redirect_uri='.$redirect_uri;
+$auth_url = $endpoint.'&client_id='.$client_id.'&scope='.$scope.'&response_type='.$response_type.'&redirect_uri='.$redirect;
+
+echo $auth_url;
 
 // Trigger the initial authentication call to receive a code
 echo "<h3>Trigger authentication -> <a href='".$auth_url."'>OAuth</a></h3>";
@@ -33,11 +34,11 @@ $authorize = "authorization_code";
 
 $url = 'https://disqus.com/api/oauth/2.0/access_token/?';
 $fields = array(
-	'grant_type'=>urlencode($authorize),
-	'client_id'=>urlencode($PUBLIC_KEY),
-	'client_secret'=>urlencode($SECRET_KEY),
-	'redirect_uri'=>urlencode($redirect),
-	'code'=>urlencode($CODE)
+  'grant_type'=>urlencode($authorize),
+  'client_id'=>urlencode($PUBLIC_KEY),
+  'client_secret'=>urlencode($SECRET_KEY),
+  'redirect_uri'=>urlencode($redirect),
+  'code'=>urlencode($CODE)
 );
 
 //url-ify the data for the POST
@@ -72,12 +73,12 @@ $access_token = $auth_results->access_token;
 echo "<p><h3>The access token you'll use in API calls:</h3>";
 echo $access_token;
 echo "</p>";
+echo $auth_results->access_token;
 
 
+  function getData($url, $SECRET_KEY, $access_token){
 
-	function getData($url, $SECRET_KEY, $access_token){
-
-  			//Setting OAuth parameters
+        //Setting OAuth parameters
         $oauth_params = (object) array(
           'access_token' => $access_token, 
           'api_secret' => $SECRET_KEY
