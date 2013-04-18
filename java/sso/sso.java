@@ -5,7 +5,7 @@ http://help.disqus.com/customer/portal/articles/236206
 
 This example uses the Jackson JSON processor: http://jackson.codehaus.org/Home
 */
-String DISQUS_SECRET_KEY = “<YOUR_SECRET_KEY>”; // Your Disqus secret key from http://disqus.com/api/applications/
+String DISQUS_SECRET_KEY = "<YOUR_SECRET_KEY>"; // Your Disqus secret key from http://disqus.com/api/applications/
 
 // User data, replace values with authenticated user data
 HashMap<String,String> message = new HashMap<String,String>();
