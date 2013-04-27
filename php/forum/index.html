@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en-us">
+	<head>
+		<title>User Discussions Test Page</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="css/bootstrap.css" rel="stylesheet" media="screen">
+	</head>
+	
+	<body>
+		<div class="row">
+			<div class="span9">
+				<h1>User Discussions</h1>
+			
+				<div id="container"></div>
+				
+				<script src="http://ajax.microsoft.com/ajax/jQuery/jquery-1.9.1.min.js"></script>
+				<script type="text/javascript">
+				$.ajax({
+					type:'GET',
+					url: 'https://disqus.com/api/3.0/threads/listByDate.jsonp?api_key=g1rAhrQKFIZgBjothiLnPRPNkAN65QME3lY16cktCRU28p7df7mfHvyIl4JuXvBx&forum=steelheadapps&related=author',
+					cache: false, dataType: "jsonp",
+					success: function(commentsresult){
+								$('#container').append('<table class="table table-striped table-hover"><thead><tr><td>Title</td><td>Author</td><td>Comments</td></tr></thead><tbody>');
+					
+								for (var i in commentsresult.response) {
+									var root = '<tr>';
+									var header = '<td><a href="' + commentsresult.response[i].link + '"><h4 class="postTitle">' + commentsresult.response[i].title + '</h4></a><p>' + commentsresult.response[i].createdAt + '</p></td>';
+									var meta = '<td class="discussionMeta">' + commentsresult.response[i].author.name + '</td>';
+									var count = '<td class="discussionCount">' + commentsresult.response[i].posts + ' comments</td>';
+									var divEnd = '</tr>';
+									
+									$('#container').append(root + header + meta + count + divEnd);
+								}
+								
+								$('#container').append('</tbody></table>');
+					}
+				});
+				</script>
+			</div>
+		</div>
+	</body>
+</html>
