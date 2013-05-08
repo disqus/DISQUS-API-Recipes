@@ -11,6 +11,7 @@ Response:
 //  This script will take a CSV file named 'whitelist.csv' and whitelist every user for a given forum. 
 //	For this to work, you upload a CSV file containing email addresses (1 per line) to be whitelisted. 
 //  You should change "YOUR_FORUM_SHORTNAME" to the appropriate forum as well in the code below.
+//  Replace "YOUR_DEFAULT_ACCESS_TOKEN" with the access token found in your application details at http://disqus.com/api/applications/
 
 	$row = 1;
 	$file = fopen("whitelist.csv", "r");
@@ -23,7 +24,7 @@ Response:
 	$curl_handle = curl_init();
 	curl_setopt($curl_handle, CURLOPT_URL, "http://disqus.com/api/3.0/whitelists/add.json");
 	curl_setopt($curl_handle, CURLOPT_POST, true);
-	curl_setopt($curl_handle, CURLOPT_POSTFIELDS, "email=$data[$c]&api_secret=YOUR_API_SECRET_KEY&forum=YOUR_FORUM_SHORTNAME");
+	curl_setopt($curl_handle, CURLOPT_POSTFIELDS, "email=$data[$c]&api_secret=YOUR_API_SECRET_KEY&forum=YOUR_FORUM_SHORTNAME&access_token=YOUR_DEFAULT_ACCESS_TOKEN");
 	curl_exec ($curl_handle);
 	curl_close($curl_handle);
 	
