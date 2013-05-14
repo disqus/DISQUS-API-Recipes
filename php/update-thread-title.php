@@ -1,7 +1,10 @@
 <?php
 
-function updateThreadTitle($threadId, $shortname, $newTitle)
+function updateThreadTitle($threadId, $shortname, $newTitle) 
 {
+	// threadId must be the internal Disqus ID
+	// Use the 'threads/details' endpoint to get the Disqus thread ID using an identifier or URL
+
 	$api="<secret key goes here>";
 	$accessToken="<your default access token>";
 	$fields_string=""; // DO NOT EDIT
@@ -32,5 +35,8 @@ function updateThreadTitle($threadId, $shortname, $newTitle)
 	// Show new information
 	var_dump($result);
 }
+
+// Example function call
+// updateThreadTitle('12345678', 'example', 'This is the article\'s new title');
 
 ?>
