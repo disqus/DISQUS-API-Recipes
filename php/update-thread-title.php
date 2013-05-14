@@ -5,18 +5,19 @@ function updateThreadTitle($threadId, $shortname, $newTitle)
 	// threadId must be the internal Disqus ID
 	// Use the 'threads/details' endpoint to get the Disqus thread ID using an identifier or URL
 
-	$api="<secret key goes here>";
-	$accessToken="<your default access token>";
-	$fields_string=""; // DO NOT EDIT
+	$api = '<secret key goes here>';
+	$accessToken = '<your default access token>';
+	$fields_string = ''; // DO NOT EDIT
 
 	// set POST variables
 	$url = 'https://disqus.com/api/3.0/threads/update.json';
 	
 	$fields = array(
-		'api_secret'=>urlencode($api), // change to api_key when using a public key
-		'thread'=>urlencode($threadId),
-		'title'=>urlencode($newTitle),
-		'forum'=>$shortname,
+		'api_secret' => urlencode($api),
+		'access_token' => $accessToken,
+		'thread' => $threadId,
+		'title' => urlencode($newTitle),
+		'forum' => $shortname,
 	);
 
 	foreach($fields as $key=>$value) { $fields_string .= $key.'='.$value.'&'; }
