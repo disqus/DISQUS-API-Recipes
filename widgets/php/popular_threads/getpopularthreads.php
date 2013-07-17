@@ -17,19 +17,16 @@
 	// construct the query with our API key and the query we want to make
 	$endpoint = 'https://disqus.com/api/3.0/threads/listPopular.json?api_secret='.urlencode($key).'&forum='.$forum.'&interval='.$interval.'&limit='.$limit;
 
-	// setup curl to make a call to the endpoint
+	// curl endpoint
 	$session = curl_init($endpoint);
-	// start dialing
 	$ch = curl_init();
-	// indicates that we want the response back rather than just returning a "TRUE" string
 	curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
-	// execute GET and get the session back
 	$data = curl_exec($session);
-	// close connection
 	curl_close($session);
 
 	// decode the json data to make it easier to parse with php
 	$results = json_decode($data);
+	
 	// error message if API call fails
 	if ($results === NULL) die('Error getting API results');
 	

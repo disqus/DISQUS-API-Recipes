@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <title>Disqus Comment Counts Example</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link href="http://mediacdn.disqus.com/1361595726/css/base.css" type="text/css" rel="stylesheet"/>
+        <style>
+            body { background: #fff !important; }
+            div { margin: 20px 0; }
+            h4 { margin-top: -12px; }
+        </style>
+    </head>
+    <body>
+        <h1>Comment Counts Example</h1>
+        <div>
+            <a href="http://thenextweb.com/google/2013/05/03/fullscreen-beam-launches-first-youtube-app-for-google-glass-with-public-or-private-sharing/">
+                <h2>Fullscreen BEAM: The first YouTube app for Google Glass comes with public or private sharing</h2>
+                <h4 class="count-comments" data-disqus-url="http://thenextweb.com/google/2013/05/03/fullscreen-beam-launches-first-youtube-app-for-google-glass-with-public-or-private-sharing/"></h4>
+            </a>
+        </div>
+        <div>
+            <a href="http://thenextweb.com/apps/2013/05/04/traktor-dj/">
+                <h2>Traktor DJ: Native Instruments remixes its impressive DJ software for iPhone</h2>
+                <h4 class="count-comments" data-disqus-url="http://thenextweb.com/apps/2013/05/04/traktor-dj/"></h4>
+            </a>
+        </div>
+        <div>
+            <a href="http://thenextweb.com/video/2013/05/04/ninja-innovation-in-the-21st-century-with-gary-shapiro-of-the-consumer-electronics-association-at-tnw2013-video/">
+                <h2>Ninja innovation in the 21st Century with the Consumer Electronics Association&#8217;s Gary Shapiro [Video]</h2>
+                <h4 class="count-comments" data-disqus-url="http://thenextweb.com/video/2013/05/04/ninja-innovation-in-the-21st-century-with-gary-shapiro-of-the-consumer-electronics-association-at-tnw2013-video/"></h4>
+            </a>
+        </div>
+        <button type="button" id="GetCountsButton">Get Comment Counts</button>
+
+        <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+        <script type="text/javascript">
+            /*
+                Get Disqus comment counts given an array of URLs
+
+                Considerations
+                --------------
+                + In most cases, you should use the default comment counting script
+                which is documented here: 
+
+                + This example will make client-side API calls, which on a busy site, will exhaust your 1000 requests/hour limit quickly.
+                Consider requesting comment counts server-side and caching the results. 
+
+                + Make sure the domain you're hosting this page on has been added to your whitelisted domains in your application: http://disqus.com/api/applications/
+
+                Cases where you might use this
+                ------------------------------
+                1. When you're counting comments on an element other than a <a> tag
+
+                2. If you're counting comments from another Disqus shortname on a page where you're using the default comment counting script
+            */
+
+            $(document).ready(function () {
+
+                //var disqusPublicKey = "YOUR_PUBLIC_KEY";
+                //var disqusShortname = "YOUR_SHORTNAME";
+
+                var disqusPublicKey = "g1rAhrQKFIZgBjothiLnPRPNkAN65QME3lY16cktCRU28p7df7mfHvyIl4JuXvBx";
+
+                var disqusShortname = "thenextweb";
+
+                var urlArray = [];
+
+
+                $('.count-comments').each(function () {
+
+                    var url = $(this).attr('data-disqus-url');
+
+                    urlArray.push('link:' + url);
+
+                });
+
+
+                $('#get-counts-button').click(function () {
+
+                    $.ajax({
+                        type: 'GET',
+                        url: "https://disqus.com/api/3.0/threads/set.jsonp",
+                        data: { api_key: disqusPublicKey, forum : disqusShortname, thread : urlArray }, // URL method
+                        cache: false,
+                        dataType: "jsonp",
+                        success: function (result) {
+
+                            for (var i in result.response) {
+
+                                var countText = " comments";
+                                var count = result.response[i].posts;
+
+                                if (count == 1)
+                                    countText = " comment";
+
+                                $('h4[data-disqus-url="' + result.response[i].link + '"]').html(count + countText);
+
+                            }
+
+                        }
+                    });
+
+                });
+
+                // Called to retrieve and to append to the 3 latest comments of a thread
+                function getRecentComments(feedUrl, threadUrl) {
+
+
+
+                }
+
+
+            });
+
+
+
+        </script>
+    </body>
+</html>
