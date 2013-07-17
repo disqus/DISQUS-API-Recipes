@@ -5,7 +5,7 @@ using System.Text;
 
 namespace sso_payload_example
 {
-    public class DisqusSSO
+    public static class DisqusSSO
     {
         /// <summary>
         /// This class generates the payload we need to authenticate users remotely through Disqus
@@ -19,23 +19,21 @@ namespace sso_payload_example
         /// ------
         /// var disqus_config = function () {
         ///         this.page.remote_auth_s3 = '<%= Payload %>';
-        ///         this.page.api_key = 'DISQUS_PUBLIC_KEY';
+        ///         this.page.api_key = 'DISQUS_PUBLIC_KEY'; // TODO enter your API public key
         ///     }
         /// 
         /// Code-behind:
         /// -----------
-        /// DisqusSSO sso = new DisqusSSO();
-        /// sso.DisqusApiSecret = "DISQUS_SECRET_KEY";
-        /// Payload = sso.GetDisqusPayload("test1", "Charlie Chaplin", "charlie@example.com");
+        /// string Payload = DisqusSSO.GetDisqusPayload("test1", "Charlie Chaplin", "charlie@example.com");
         /// 
         /// </summary>
 
         /// Disqus API secret key can be obtained here: http://disqus.com/api/applications/
         /// This will only work if that key is associated with your SSO remote domain
-        public string DisqusApiSecret { get; set; } 
+        private static string DisqusApiSecret = "DISQUS_SECRET_KEY"; // TODO enter your API secret key
         
         // Only required arguments
-        public string GetDisqusPayload(string user_id, string user_name, string user_email)
+        public static string GetDisqusPayload(string user_id, string user_name, string user_email)
         {
             var userdata = new
             {
@@ -49,7 +47,7 @@ namespace sso_payload_example
         }
 
         // Required + Avatar
-        public string GetDisqusPayload(string user_id, string user_name, string user_email, string user_avatar)
+        public static string GetDisqusPayload(string user_id, string user_name, string user_email, string user_avatar)
         {
             var userdata = new
             {
@@ -64,7 +62,7 @@ namespace sso_payload_example
         }
 
         // All Required + Optional arguments
-        public string GetDisqusPayload(string user_id, string user_name, string user_email, string user_avatar, string user_url)
+        public static string GetDisqusPayload(string user_id, string user_name, string user_email, string user_avatar, string user_url)
         {            
             var userdata = new 
             { 
@@ -83,7 +81,7 @@ namespace sso_payload_example
         /// Method to log out a user from SSO
         /// </summary>
         /// <returns>A signed, empty payload</returns>
-        public string LogoutUser()
+        public static string LogoutUser()
         {
             var userdata = new { };
             string serializedUserData = new JavaScriptSerializer().Serialize(userdata);
@@ -91,7 +89,7 @@ namespace sso_payload_example
         }
 
         // Take user data and finish generating payload
-        private string GeneratePayload(string serializedUserData)
+        private static string GeneratePayload(string serializedUserData)
         {
             byte[] userDataAsBytes = Encoding.ASCII.GetBytes(serializedUserData);
 
@@ -115,7 +113,7 @@ namespace sso_payload_example
         }
 
         // Helper to convert bytes into a string for our hashed message
-        public static string ByteToString(byte[] buff)
+        private static string ByteToString(byte[] buff)
         {
             string sbinary = "";
 
