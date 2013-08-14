@@ -24,9 +24,9 @@
 		   params[decode(match[1])] = decode(match[2]);
 		   
 	    
-		if (params["shortname"] == undefined || params["identifier"] == undefined || params["url"] == undefined || params["title"] == undefined) {
+		if (params["shortname"] == undefined || params["url"] == undefined || params["title"] == undefined) {
 			
-			alert("Arguments missing");
+			alert("Required arguments missing");
 			
 		}
 		else {
@@ -41,7 +41,12 @@
 		disqus_url = url;
 		disqus_title = title;
 		disqus_shortname = shortname;
-		disqus_identifier = identifier;
+		
+		if (identifier != undefined)
+			disqus_identifier = identifier;
+			
+		else
+			disqus_identifier = "";
 	
 		(function() {
 			var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = false;
