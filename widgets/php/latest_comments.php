@@ -1,10 +1,10 @@
 <?php
 ini_set('display_errors', 1);  
  
-$key='kJluhqMiymsniJy2vGFWYmxRUwGQ29Lsrr0taCTYAInw96uqzkBpwqrAv3BAeV5t'; // TODO replace with your Disqus secret key from http://disqus.com/api/applications/
-$forum='testidgse'; // Disqus shortname
+$key='YOUR_SECRET_KEY'; // TODO replace with your Disqus secret key from http://disqus.com/api/applications/
+$forum='YOUR_SHORTNAME'; // Disqus shortname
 $limit='5'; // The number of comments you want to show
-$thread='ident:1.441028'; // Same as your disqus_identifier
+$thread='YOUR_IDENTIFIER'; // Same as your disqus_identifier
 $endpoint = 'https://disqus.com/api/3.0/threads/listPosts.json?api_secret='.$key.'&forum='.$forum.'&thread='.$thread.'&limit='.$limit;
 //$endpoint = 'http://disqus.com/';
  
@@ -36,7 +36,7 @@ foreach ($comments as $comment)
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>IDG Test Widget</title>
+        <title>Example Widget</title>
         <style>
             body { font-family: Arial; }
             
@@ -62,11 +62,11 @@ foreach ($comments as $comment)
         <h1>Javascript Version</h1>
         <div id="comment_widget_js"></div>
  
-        <script src="http://steelheadapps.com/sonar/assets/js/jquery-1.7.2.min.js"></script>
+        <script src="/assets/js/jquery-1.7.2.min.js"></script>
         <script type="text/javascript">
         $.ajax({
 		type:'GET',
-		url: 'https://disqus.com/api/3.0/threads/listPosts.jsonp?api_key=g1rAhrQKFIZgBjothiLnPRPNkAN65QME3lY16cktCRU28p7df7mfHvyIl4JuXvBx&forum=testidgse&thread=ident:1.441028&limit=5', // TODO replace with your Public key
+		url: 'https://disqus.com/api/3.0/threads/listPosts.jsonp?api_key=YOUR_API_KEY&forum=YOUR_SHORTNAME&thread=ident:YOUR_IDENTIFIER&limit=5', // TODO replace with your Public key
 		cache: false,
             	dataType: "jsonp",
 		success: function(commentsresult){
