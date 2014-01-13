@@ -10,4 +10,4 @@ This function won't circumvent the need for each unique discussion to have a uni
 
 ## Screenshot
 
-![DISQUS.reset screenshot](https://www.dropbox.com/s/2f29elw2ih9fn6x/shot_140113_143204.png)
+![DISQUS.reset screenshot](https://photos-4.dropbox.com/t/0/AAAnxjsQ41qUfFluaQVa07BKnIRg4Wm84TxHuEwcB3Umkw/12/13552259/png/1024x768/3/1389657600/0/2/shot_140113_143204.png/UpOSQ9c7XlmkxlxfwdtQvA1WbndUbNCW7Lo5VjfwHhs)
