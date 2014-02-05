@@ -3,9 +3,9 @@ using System.Web.Script.Serialization;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace sso_payload_example
+namespace Disqus.Examples
 {
-    public static class DisqusSSO
+    public static class SSO
     {
         /// <summary>
         /// This class generates the payload we need to authenticate users remotely through Disqus
@@ -24,30 +24,25 @@ namespace sso_payload_example
         /// 
         /// Code-behind:
         /// -----------
-        /// string Payload = DisqusSSO.GetDisqusPayload("test1", "Charlie Chaplin", "charlie@example.com");
+        /// string Payload = Disqus.Examples.SSO.GetPayload("test1", "Charlie Chaplin", "charlie@example.com");
         /// 
         /// </summary>
 
         /// Disqus API secret key can be obtained here: http://disqus.com/api/applications/
         /// This will only work if that key is associated with your SSO remote domain
-        private static string DisqusApiSecret = "DISQUS_SECRET_KEY"; // TODO enter your API secret key
         
-        // Only required arguments
-        public static string GetDisqusPayload(string user_id, string user_name, string user_email)
-        {
-            var userdata = new
-            {
-                id = user_id,
-                username = user_name,
-                email = user_email,
-            };
+        private const string _apiSecret = "DISQUS_SECRET_KEY"; // TODO enter your API secret key
 
-            string serializedUserData = new JavaScriptSerializer().Serialize(userdata);
-            return GeneratePayload(serializedUserData);
-        }
-
-        // Required + Avatar
-        public static string GetDisqusPayload(string user_id, string user_name, string user_email, string user_avatar)
+        /// <summary>
+        /// Gets the Disqus SSO payload to authenticate users
+        /// </summary>
+        /// <param name="user_id">The unique ID to associate with the user</param>
+        /// <param name="user_name">Non-unique name shown next to comments.</param>
+        /// <param name="user_email">User's email address, defined by RFC 5322</param>
+        /// <param name="avatar_url">URL of the avatar image</param>
+        /// <param name="website_url">Website, blog or custom profile URL for the user, defined by RFC 3986</param>
+        /// <returns>A string containing the signed payload</returns>
+        public static string GetPayload(string user_id, string user_name, string user_email, string avatar_url = "", string website_url = "")
         {
             var userdata = new
             {
@@ -55,22 +50,7 @@ namespace sso_payload_example
                 username = user_name,
                 email = user_email,
                 avatar = user_avatar,
-            };
-
-            string serializedUserData = new JavaScriptSerializer().Serialize(userdata);
-            return GeneratePayload(serializedUserData);
-        }
-
-        // All Required + Optional arguments
-        public static string GetDisqusPayload(string user_id, string user_name, string user_email, string user_avatar, string user_url)
-        {            
-            var userdata = new 
-            { 
-                id = user_id, // Unique ID associated with each user. Make sure this never conflicts with test data or other users, REQUIRED
-                username = user_name, // The name displayed next to the user's comments. 30 characters max. REQUIRED
-                email = user_email, // Email address associated with user, REQUIRED
-                avatar = user_avatar, // Avatar image, OPTIONAL
-                url = user_url // Profile or website URL, OPTIONAL
+                url = user_url
             };
 
             string serializedUserData = new JavaScriptSerializer().Serialize(userdata);
@@ -80,7 +60,7 @@ namespace sso_payload_example
         /// <summary>
         /// Method to log out a user from SSO
         /// </summary>
-        /// <returns>A signed, empty payload</returns>
+        /// <returns>A signed, empty payload string</returns>
         public static string LogoutUser()
         {
             var userdata = new { };
@@ -88,7 +68,6 @@ namespace sso_payload_example
             return GeneratePayload(serializedUserData);
         }
 
-        // Take user data and finish generating payload
         private static string GeneratePayload(string serializedUserData)
         {
             byte[] userDataAsBytes = Encoding.ASCII.GetBytes(serializedUserData);
@@ -104,7 +83,7 @@ namespace sso_payload_example
             byte[] messageAndTimestampBytes = Encoding.ASCII.GetBytes(Message + " " + Timestamp);
 
             // Convert Disqus API key to HMAC-SHA1 signature
-            byte[] apiBytes = Encoding.ASCII.GetBytes(DisqusApiSecret);
+            byte[] apiBytes = Encoding.ASCII.GetBytes(_apiSecret);
             HMACSHA1 hmac = new HMACSHA1(apiBytes);
             byte[] hashedMessage = hmac.ComputeHash(messageAndTimestampBytes);
 
@@ -112,7 +91,6 @@ namespace sso_payload_example
             return Message + " " + ByteToString(hashedMessage) + " " + Timestamp;
         }
 
-        // Helper to convert bytes into a string for our hashed message
         private static string ByteToString(byte[] buff)
         {
             string sbinary = "";
