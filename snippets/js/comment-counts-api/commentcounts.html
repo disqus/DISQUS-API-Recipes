@@ -54,25 +54,14 @@
             */
 
             $(document).ready(function () {
-
-                //var disqusPublicKey = "YOUR_PUBLIC_KEY";
-                //var disqusShortname = "YOUR_SHORTNAME";
-
-                var disqusPublicKey = "g1rAhrQKFIZgBjothiLnPRPNkAN65QME3lY16cktCRU28p7df7mfHvyIl4JuXvBx";
-
-                var disqusShortname = "thenextweb";
-
+                var disqusPublicKey = "YOUR_PUBLIC_KEY";
+                var disqusShortname = "YOUR_SHORTNAME";
                 var urlArray = [];
 
-
                 $('.count-comments').each(function () {
-
                     var url = $(this).attr('data-disqus-url');
-
                     urlArray.push('link:' + url);
-
                 });
-
 
                 $('#get-counts-button').click(function () {
 
@@ -83,36 +72,16 @@
                         cache: false,
                         dataType: "jsonp",
                         success: function (result) {
-
                             for (var i in result.response) {
-
                                 var countText = " comments";
                                 var count = result.response[i].posts;
-
-                                if (count == 1)
-                                    countText = " comment";
-
+                                if (count == 1) countText = " comment";
                                 $('h4[data-disqus-url="' + result.response[i].link + '"]').html(count + countText);
-
                             }
-
                         }
                     });
-
                 });
-
-                // Called to retrieve and to append to the 3 latest comments of a thread
-                function getRecentComments(feedUrl, threadUrl) {
-
-
-
-                }
-
-
             });
-
-
-
         </script>
     </body>
 </html>
