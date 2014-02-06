@@ -11,7 +11,6 @@
 	var disqus_title;
 	var disqus_shortname;
 	var disqus_identifier;
-	var disqus_disable_mobile = true;
 	
 	window.onload = function () {
 		var match,
@@ -23,29 +22,22 @@
 		params = {};
 		while (match = search.exec(query))
 		   params[decode(match[1])] = decode(match[2]);
-		   
 	    
 		if (params["shortname"] == undefined || params["url"] == undefined || params["title"] == undefined) {
-			
 			alert("Required arguments missing");
-			
 		}
 		else {
-		
 			loadComments(params["shortname"], params["url"], params["title"], params["identifier"]);
-		
 		}
 	}
 	
 	function loadComments(shortname, url, title, identifier) {
-	
 		disqus_url = url;
 		disqus_title = title;
 		disqus_shortname = shortname;
 		
 		if (identifier != undefined)
 			disqus_identifier = identifier;
-			
 		else
 			disqus_identifier = "";
 	
@@ -54,10 +46,7 @@
 			dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
 			(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
 		})();
-	
 	}
-
-    
 </script>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
