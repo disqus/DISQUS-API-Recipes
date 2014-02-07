@@ -49,8 +49,8 @@ namespace Disqus.Examples
                 id = user_id,
                 username = user_name,
                 email = user_email,
-                avatar = user_avatar,
-                url = user_url
+                avatar = avatar_url,
+                url = website_url
             };
 
             string serializedUserData = new JavaScriptSerializer().Serialize(userdata);
