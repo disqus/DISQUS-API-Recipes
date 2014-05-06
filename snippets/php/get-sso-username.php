@@ -23,7 +23,7 @@
 	curl_close($session);
 	
 	// decode the json data to make it easier to parse the php
-	$results = json_decode($data);
+	$results = json_decode($result);
 	if ($results === NULL) die('Error parsing json');
 
 	// show the response in the browser
