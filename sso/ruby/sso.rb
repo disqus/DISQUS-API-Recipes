@@ -7,7 +7,7 @@ require "json"
 DISQUS_SECRET_KEY = '<YOUR_SECRET_KEY>'
 DISQUS_PUBLIC_KEY = '<YOUR_PUBLIC_KEY>'
  
-def get disqus_sso(user)
+def get_disqus_sso(user)
     # create a JSON packet of our data attributes
     data = 	{
       'id' => user['id'],
