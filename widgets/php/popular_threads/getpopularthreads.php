@@ -17,23 +17,25 @@
 	// construct the query with our API key and the query we want to make
 	$endpoint = 'https://disqus.com/api/3.0/threads/listPopular.json?api_secret='.urlencode($key).'&forum='.$forum.'&interval='.$interval.'&limit='.$limit;
 
-	// curl endpoint
-	$session = curl_init($endpoint);
+	//  Initiate curl
 	$ch = curl_init();
-	curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
-	$data = curl_exec($session);
-	curl_close($session);
-
-	// decode the json data to make it easier to parse with php
+	// Disable SSL verification
+	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+	// Will return the response, if false it print the response
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	// Set the url
+	curl_setopt($ch, CURLOPT_URL, $endpoint);
+	// Execute
+	$data = curl_exec($ch);
 	$results = json_decode($data);
-	
+
 	// error message if API call fails
 	if ($results === NULL) die('Error getting API results');
 	
 	// parse the desired JSON data into HTML for use on your site
 	$threads = $results->response;
 		foreach ($threads as $thread) {
-		$finalResults .= "<p class=\"dsq-widget-thread\"><a href=\"".$thread->link."\">".$thread->title."</a>&nbsp;&nbsp;&nbsp;".$thread->posts."</p>";
+		$finalResults .= "<p class=\"dsq-widget-thread\"><a href=\"".$thread->link."\">".$thread->title."</a>&nbsp;(".$thread->posts.")</p>";
 		}
 		
 	// save api results to the cache file you specified in $filename
