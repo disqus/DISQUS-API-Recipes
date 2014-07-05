@@ -7,7 +7,7 @@
 	$limit="100"; // list 100 users. max is 100
 
 	// construct the query with our API key and the query we want to make
-	$endpoint = 'http://disqus.com/api/3.0/forums/listMostActiveUsers.json?api_key='.urlencode($key).'&forum='.$forum.'&limit='.$limit;
+	$endpoint = 'http://disqus.com/api/3.0/forums/listMostActiveUsers.json?api_secret='.urlencode($key).'&forum='.$forum.'&limit='.$limit;
 
 	// setup curl to make a call to the endpoint
 	$session = curl_init($endpoint);
