@@ -30,5 +30,5 @@ def get_disqus_sso(user)
             this.page.remote_auth_s3 = \"#{message} #{sig} #{timestamp}\";
             this.page.api_key = \"#{DISQUS_PUBLIC_KEY}\";
         }
-	</script>"
+	</script>".html_safe
 end
