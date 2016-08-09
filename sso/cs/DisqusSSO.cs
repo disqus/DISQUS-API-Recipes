@@ -30,8 +30,9 @@ namespace Disqus.Examples
 
         /// Disqus API secret key can be obtained here: http://disqus.com/api/applications/
         /// This will only work if that key is associated with your SSO remote domain
+        /// It is highly recommended that you DO NOT hard-code your API secret key here, and instead read it from a secure configuration store
         
-        private const string _apiSecret = "DISQUS_SECRET_KEY"; // TODO enter your API secret key
+        private const string _apiSecret = "DISQUS_SECRET_KEY"; // TODO enter your API secret key (for illustrative purposes only)
 
         /// <summary>
         /// Gets the Disqus SSO payload to authenticate users
@@ -84,11 +85,12 @@ namespace Disqus.Examples
 
             // Convert Disqus API key to HMAC-SHA1 signature
             byte[] apiBytes = Encoding.ASCII.GetBytes(_apiSecret);
-            HMACSHA1 hmac = new HMACSHA1(apiBytes);
-            byte[] hashedMessage = hmac.ComputeHash(messageAndTimestampBytes);
+            using (HMACSHA1 hmac = new HMACSHA1(apiBytes)) {
+                byte[] hashedMessage = hmac.ComputeHash(messageAndTimestampBytes);
 
-            // Put it all together into the final payload
-            return Message + " " + ByteToString(hashedMessage) + " " + Timestamp;
+                // Put it all together into the final payload
+                return Message + " " + ByteToString(hashedMessage) + " " + Timestamp;
+            }
         }
 
         private static string ByteToString(byte[] buff)
