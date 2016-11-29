@@ -71,7 +71,7 @@ namespace Disqus.Examples
 
         private static string GeneratePayload(string serializedUserData)
         {
-            byte[] userDataAsBytes = Encoding.ASCII.GetBytes(serializedUserData);
+            byte[] userDataAsBytes = Encoding.UTF8.GetBytes(serializedUserData);
 
             // Base64 Encode the message
             string Message = System.Convert.ToBase64String(userDataAsBytes);
