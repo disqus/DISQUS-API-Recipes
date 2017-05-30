@@ -1,5 +1,5 @@
 defmodule Disqus.SSO do
-  @doc """
+  @moduledoc """
   This module depends on Poison
   Add to the mix.exs deps section the folowing line
     {:poison, "~> 2.2.0"}
@@ -10,12 +10,15 @@ defmodule Disqus.SSO do
       {:poison, "~> 2.2.0"}
     ]
   end
+  """
 
+
+  @doc """
   user_params - a map contains:
     - required keys "id", "username", "email",
     - optional keys "avatar", "url"
   """
-  def get_disqus_sso_js(user_params, disqus_api_key \\ nil, disqus_secret_key \\ nil) do
+  def get_disqus_sso(user_params, disqus_api_key \\ nil, disqus_secret_key \\ nil) do
       # Getting keys from system env
       disqus_api_key =  disqus_api_key || System.get_env("DISQUS_API_KEY")
       disqus_secret_key = disqus_secret_key || System.get_env("DISQUS_SECRET_KEY")
