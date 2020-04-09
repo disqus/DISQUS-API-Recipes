@@ -11,27 +11,27 @@ namespace Disqus.Examples
         /// This class generates the payload we need to authenticate users remotely through Disqus
         /// This requires the Disqus SSO package and to have set up your application/remote domain properly
         /// See here for more: http://help.disqus.com/customer/portal/articles/236206-integrating-single-sign-on
-        /// 
+        ///
         /// Usage:
         /// After inputting user data, a final payload will be generated which you use for the javascript variable 'remote_auth_s3'
-        /// 
+        ///
         /// Markup:
         /// ------
         /// var disqus_config = function () {
         ///         this.page.remote_auth_s3 = '<%= Payload %>';
         ///         this.page.api_key = 'DISQUS_PUBLIC_KEY'; // TODO enter your API public key
         ///     }
-        /// 
+        ///
         /// Code-behind:
         /// -----------
         /// string Payload = Disqus.Examples.SSO.GetPayload("test1", "Charlie Chaplin", "charlie@example.com");
-        /// 
+        ///
         /// </summary>
 
         /// Disqus API secret key can be obtained here: http://disqus.com/api/applications/
         /// This will only work if that key is associated with your SSO remote domain
         /// It is highly recommended that you DO NOT hard-code your API secret key here, and instead read it from a secure configuration store
-        
+
         private const string _apiSecret = "DISQUS_SECRET_KEY"; // TODO enter your API secret key (for illustrative purposes only)
 
         /// <summary>
@@ -71,7 +71,7 @@ namespace Disqus.Examples
 
         private static string GeneratePayload(string serializedUserData)
         {
-            byte[] userDataAsBytes = Encoding.ASCII.GetBytes(serializedUserData);
+            byte[] userDataAsBytes = Encoding.UTF8.GetBytes(serializedUserData);
 
             // Base64 Encode the message
             string Message = System.Convert.ToBase64String(userDataAsBytes);
@@ -81,10 +81,10 @@ namespace Disqus.Examples
             string Timestamp = Convert.ToInt32(ts.TotalSeconds).ToString();
 
             // Convert the message + timestamp to bytes
-            byte[] messageAndTimestampBytes = Encoding.ASCII.GetBytes(Message + " " + Timestamp);
+            byte[] messageAndTimestampBytes = Encoding.UTF8.GetBytes(Message + " " + Timestamp);
 
             // Convert Disqus API key to HMAC-SHA1 signature
-            byte[] apiBytes = Encoding.ASCII.GetBytes(_apiSecret);
+            byte[] apiBytes = Encoding.UTF8.GetBytes(_apiSecret);
             using (HMACSHA1 hmac = new HMACSHA1(apiBytes)) {
                 byte[] hashedMessage = hmac.ComputeHash(messageAndTimestampBytes);
 
