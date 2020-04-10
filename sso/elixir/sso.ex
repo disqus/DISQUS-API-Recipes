@@ -1,13 +1,13 @@
 defmodule Disqus.SSO do
   @moduledoc """
-  This module depends on Poison
+  This module depends on Jason (https://github.com/michalmuskala/jason)
   Add to the mix.exs deps section the folowing line
-    {:poison, "~> 2.2.0"}
+    {:jason, "~> 1.2"}
 
   like:
   defp deps do
     [
-      {:poison, "~> 2.2.0"}
+      {:jason, "~> 1.2"}
     ]
   end
   """
@@ -32,7 +32,7 @@ defmodule Disqus.SSO do
         "avatar" => user_params["avatar"],
         "url" => user_params["url"]
       }
-      |> Poison.encode!()
+      |> Jason.encode!()
       |> Base.encode64()
 
       # generate a timestamp for signing the message
