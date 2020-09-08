@@ -1,0 +1,103 @@
+<!-- This is a static file -->
+<!-- served from your routes in server.js -->
+
+<!-- You might want to try something fancier: -->
+<!-- html/nunjucks docs: https://mozilla.github.io/nunjucks/ -->
+<!-- pug: https://pugjs.org/ -->
+<!-- haml: http://haml.info/ -->
+<!-- hbs(handlebars): http://handlebarsjs.com/ -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Disqus SSO Demo</title>
+    <meta name="description" content="A quick start demo for Disqus SSO">
+    <link rel="icon" type="image/png" href="https://c.disquscdn.com/next/current/marketing/assets/img/brand/favicon-32x32.png" sizes="32x32">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/style.css">
+    <script src="https://code.jquery.com/jquery-2.2.1.min.js"
+        integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="
+        crossorigin="anonymous"></script> 
+
+  </head>
+      <body>
+        <!-- On button click, call reset() function with empty SSO auth payload to log out current user -->
+        <!-- 
+        <button onclick="reset('e30= c1ad77866d19a308f133d18bb12a3e1f5d536a3b 1495142696');">
+          Log out user with empty SSO auth
+        </button>
+        
+        <button onclick="login();">
+          Login
+        </button>
+         -->
+        
+        <div id="disqus_thread"></div>
+        <script>
+        var params;
+        var disqus_url;
+        var disqus_title;
+        var disqus_shortname;
+        var disqus_identifier;
+        
+        window.onload = function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const myParam = urlParams.get('myParam');
+            params = {
+                'identifier': urlParams.get('identifier'),
+                'title': urlParams.get('title'),
+                'payload': urlParams.get('payload'),
+            };
+            while (match = search.exec(query))
+               params[decode(match[1])] = decode(match[2]);
+           
+            if (params['identifier'] === undefined) {
+                alert('identifier missing');
+            } else if (params['title'] === undefined) {
+                alert('title missing');
+            } else if (params['payload'] === undefined) {
+                alert('payload missing');
+            }
+        };
+          /**
+           *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+           *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+           */
+
+          var disqus_config = function () {
+              const urlParams = new URLSearchParams(window.location.search);
+              this.page.identifier = urlParams.get('identifier');
+              this.page.title = urlParams.get('title');
+
+              this.page.remote_auth_s3 = urlParams.get('payload');
+
+              this.page.api_key = 'iC9bwl9gbF5xszqnrp2Yqt1PzZ3reJzNvsToP6oOcDMmMCG8pcNs5TEYaF60MUnx';
+              this.sso = {
+                name:   "SampleNews",
+                button:  "http://example.com/images/samplenews.gif",
+                icon:     "http://example.com/favicon.png",
+                url:        "http://example.com/login-success/",
+                logout:  "http://example.com/logout/",
+                profile_url: "http://example.com/profileUrlTemplate/{username}",
+                width:   "800",
+                height:  "400"
+              };
+          };
+
+          (function() {  // DON'T EDIT BELOW THIS LINE
+              var d = document, s = d.createElement('script');
+
+              s.src = 'https://mobile-test.disqus.com/embed.js';;
+
+              s.setAttribute('data-timestamp', +new Date());
+              (d.head || d.body).appendChild(s);
+          })();   
+
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>              
+        
+  </body>
+</html>
+
