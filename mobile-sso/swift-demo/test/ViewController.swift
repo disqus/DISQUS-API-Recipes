@@ -35,7 +35,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
     
     func login() {
         let parameters = [
-            "email": "dmatt+9898@disqus.com",
+            "email": "youremail_here@disqus.com",
             "password": "pwd"
         ]
 //        let parameters = [
