@@ -28,10 +28,7 @@ app.get("/login", function (request, response) {
         let payload = disqusSignon(users[0])
         response.send(payload);
    } else if (username === 'uniqueperson122327') {
-        let payload = disqusSignon(users[4])
-        response.send(payload);
-   } else {
-        let payload = disqusSignon(users[16])
+        let payload = disqusSignon(users[1])
         response.send(payload);
    }
 });
@@ -47,7 +44,7 @@ var users = [
     url:'https://advrider.com/index.php?members/disqustest.422614/',
     profile_url:'https://example.com/providedProfileUrl-4226149898'
   },
-    // test user 4
+    // test user 1
   {
     id:'1234523232329',
     username: 'uniqueperson122327',
