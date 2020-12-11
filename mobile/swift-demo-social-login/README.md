@@ -20,6 +20,6 @@ Your app is listening on port 5000
 3. Verify that the local server is running by going to http://localhost:5000/. 
 
 ## Setting up client environment
-1. Build the social_login_client.xcworkspace
-2. Run the simulator
+1. Open social_login_client.xcworkspace in Xcode 
+2. Build and Run project
 3. At this point you should be able to log in via social auth.
