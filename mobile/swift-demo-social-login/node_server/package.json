@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "crypto-js": "^4.0.0",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1"
   }
 }
