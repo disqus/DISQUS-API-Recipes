@@ -19,9 +19,8 @@ app.get("/", function (request, response) {
 });
 
 // listen for requests :)
-console.log("port is ", process.env.PORT);
 app.listen(process.env.PORT, function () {
-  console.log('Your app is listening on port ' + process.env.PORT);
+  console.log('Your app is listening at http://localhost:' + process.env.PORT + '/');
 });
 
 // SSO payload generation code from https://github.com/disqus/DISQUS-API-Recipes/tree/master/sso/javascript
