@@ -1,0 +1,14 @@
+{
+  "name": "mobile-dev",
+  "version": "1.0.0",
+  "description": "disqus mobile dev",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "crypto-js": "^4.0.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1"
+  }
+}
