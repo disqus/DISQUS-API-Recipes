@@ -14,8 +14,7 @@ The social login demo works in two parts.
 $ npm install
 $ node index.js
 
-port is  5000
-Your app is listening on port 5000
+Your app is listening at http://localhost:5000/
 ```
 3. Verify that the local server is running by going to http://localhost:5000/. 
 
