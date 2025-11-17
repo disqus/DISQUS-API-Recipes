@@ -1,0 +1,24 @@
+{
+  "expo": {
+    "name": "disqus-webview-demo",
+    "slug": "disqus-webview-demo",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/disqus-icon.png",
+    "scheme": "myapp",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "ios": {
+      "supportsTablet": true
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "single",
+      "favicon": "./assets/disqus-icon.png"
+    },
+    "plugins": ["expo-router", "expo-font", "expo-web-browser"],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}

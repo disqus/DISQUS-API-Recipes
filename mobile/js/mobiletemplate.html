@@ -19,11 +19,16 @@
 			decode = function (s) { return decodeURIComponent(s.replace(pattern, " ")); },
 			query = window.location.search.substring(1);
 
-		params = {};
+		params = { // Explicitly include the params here as undefined for clarity
+			shortname: undefined,
+			url: undefined,
+			title: undefined,
+		};
 		while (match = search.exec(query))
 		   params[decode(match[1])] = decode(match[2]);
 	    
 		if (params["shortname"] === undefined || params["url"] === undefined || params["title"] === undefined) {
+			// shortname, url, and title are all required params
 			alert("Required arguments missing");
 		}
 		else {
@@ -43,7 +48,7 @@
 	
 		(function() {
 			var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = false;
-			dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+			dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
 			(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
 		})();
 	}
