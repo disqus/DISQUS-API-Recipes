@@ -16,10 +16,7 @@ class DisqusSDKDemoAndroidApplication : Application() {
                     apiKey           = BuildConfig.DISQUS_API_KEY,
                     url              = BuildConfig.DISQUS_URL,
                     title            = BuildConfig.DISQUS_TITLE,
-                    oauthCallbackUrl = "https://casualgamer.saas-dev.disqus.org/mobileauth/success",
-                    backgroundColor  = "#80e51b",
-                    anchorColor      = "#FF0000",
-                    environment      = DisqusConfig.Environment.STAGING,
+                    oauthCallbackUrl = "https://YOURSHORTNAME.disqus.com/mobileauth/success",
                 )
             )
         } catch (e: DisqusError.AlreadyInitialized) {

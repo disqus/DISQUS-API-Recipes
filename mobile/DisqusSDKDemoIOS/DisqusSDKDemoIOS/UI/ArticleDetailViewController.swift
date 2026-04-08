@@ -53,7 +53,7 @@ final class ArticleDetailViewController: UIViewController {
 
         // Build per-article oauthCallbackUrl from the article's shortName.
         // The global config's oauthCallbackUrl provides the domain suffix and path template
-        // (e.g. ".saas-dev.disqus.org/mobileauth/success"). Each article replaces just
+        // (e.g. "SHORTNAME.disqus.com/mobileauth/success"). Each article replaces just
         // the subdomain prefix with its own shortName so the AASA and server redirect match.
         let articleCallbackUrl: String?
         if let template = config.oauthCallbackUrl,
@@ -71,11 +71,8 @@ final class ArticleDetailViewController: UIViewController {
             apiKey:           article.apiKey,
             url:              article.url,
             title:            article.title,
-            environment:      config.environment,
             oauthCallbackUrl: articleCallbackUrl,
-            identifier:       article.id,
-            anchorColor:      "#FF0000",
-            backgroundColor:  "#80e51b"
+            identifier:       article.id
         )
         guard let articleConfig else { return }
 

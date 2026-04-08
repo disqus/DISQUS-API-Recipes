@@ -11,14 +11,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     ) -> Bool {
         do {
             try DisqusSDK.shared.initialize(with: DisqusConfig(
-                shortName:        "hovseptestrealm",
-                apiKey:           "YOUR_API_KEY",   // Replace with your Disqus public API key
-                url:              "https://hovspian.github.io/disqus-embed/",
-                title:            "test_template",
-                environment:      .staging,
-                oauthCallbackUrl: "https://casualgamer.saas-dev.disqus.org/mobileauth/success",
-                anchorColor:      "#FF0000",
-                backgroundColor:  "#80e51b"
+                shortName:        "YOUR_SHORT_NAME",  // Replace with your Disqus forum short name
+                apiKey:           "YOUR_API_KEY",     // Replace with your Disqus public API key
+                url:              "https://example.com/article",  // Replace with your article URL
+                title:            "Your Article Title",           // Replace with your article title
+                oauthCallbackUrl: "https://YOURSHORTNAME.disqus.com/mobileauth/success"
             ))
         } catch {
             print("[DisqusSDKDemoIOS] SDK init error: \(error)")

@@ -5,15 +5,9 @@
 <dict>
     <key>com.apple.developer.associated-domains</key>
     <array>
-        <string>applinks:saas-dev.disqus.org</string>
-        <string>applinks:*.saas-dev.disqus.org</string>
-        <string>applinks:casualgamer.saas-dev.disqus.org?mode=developer</string>
-        <string>webcredentials:casualgamer.saas-dev.disqus.org?mode=developer</string>
-        <string>applinks:hovseptestrealm.saas-dev.disqus.org?mode=developer</string>
         <string>applinks:disqus.com</string>
         <string>applinks:*.disqus.com</string>
         <string>webcredentials:disqus.com</string>
-        <string>webcredentials:saas-dev.disqus.org</string>
     </array>
 </dict>
 </plist>

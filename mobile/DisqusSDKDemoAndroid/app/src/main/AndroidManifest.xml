@@ -24,24 +24,14 @@
             android:name=".ArticleDetailActivity"
             android:exported="true"
             android:launchMode="singleTop">
-            <!-- App Link: staging — OS intercepts mobileauth/success before Chrome loads the page -->
+            <!-- App Link: production — OS intercepts mobileauth/success before Chrome loads the page -->
             <intent-filter android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
                 <data
                     android:scheme="https"
-                    android:host="casualgamer.saas-dev.disqus.org"
-                    android:pathPrefix="/mobileauth/success" />
-            </intent-filter>
-            <!-- App Link: production -->
-            <intent-filter android:autoVerify="true">
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-                <data
-                    android:scheme="https"
-                    android:host="casualgamer.disqus.com"
+                    android:host="YOURSHORTNAME.disqus.com"
                     android:pathPrefix="/mobileauth/success" />
             </intent-filter>
             <!-- Custom scheme fallback for app-level login (DisqusAuthManager.startLogin) -->
