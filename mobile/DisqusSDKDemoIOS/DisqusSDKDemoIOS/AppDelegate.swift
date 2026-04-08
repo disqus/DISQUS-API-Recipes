@@ -1,0 +1,35 @@
+// Copyright (c) 2024 Publisher. Licensed under the MIT License.
+import UIKit
+import DisqusSDKIOS
+
+@main
+class AppDelegate: UIResponder, UIApplicationDelegate {
+
+    func application(
+        _ application: UIApplication,
+        didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
+    ) -> Bool {
+        do {
+            try DisqusSDK.shared.initialize(with: DisqusConfig(
+                shortName:        "YOUR_SHORT_NAME",  // Replace with your Disqus forum short name
+                apiKey:           "YOUR_API_KEY",     // Replace with your Disqus public API key
+                url:              "https://example.com/article",  // Replace with your article URL
+                title:            "Your Article Title",           // Replace with your article title
+                oauthCallbackUrl: "https://YOURSHORTNAME.disqus.com/mobileauth/success" // Replace YOURSHORTNAME with your Disqus forum short name
+            ))
+        } catch {
+            print("[DisqusSDKDemoIOS] SDK init error: \(error)")
+        }
+        return true
+    }
+
+    // MARK: UISceneSession Lifecycle
+
+    func application(
+        _ application: UIApplication,
+        configurationForConnecting connectingSceneSession: UISceneSession,
+        options: UIScene.ConnectionOptions
+    ) -> UISceneConfiguration {
+        UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
+    }
+}
