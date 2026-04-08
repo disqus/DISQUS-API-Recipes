@@ -1,6 +1,6 @@
 // Copyright (c) 2024 Publisher. Licensed under the MIT License.
 import UIKit
-import DisqusSDK
+import DisqusSDKIOS
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 apiKey:           "YOUR_API_KEY",     // Replace with your Disqus public API key
                 url:              "https://example.com/article",  // Replace with your article URL
                 title:            "Your Article Title",           // Replace with your article title
-                oauthCallbackUrl: "https://YOURSHORTNAME.disqus.com/mobileauth/success"
+                oauthCallbackUrl: "https://YOURSHORTNAME.disqus.com/mobileauth/success" // Replace YOURSHORTNAME with your Disqus forum short name
             ))
         } catch {
             print("[DisqusSDKDemoIOS] SDK init error: \(error)")

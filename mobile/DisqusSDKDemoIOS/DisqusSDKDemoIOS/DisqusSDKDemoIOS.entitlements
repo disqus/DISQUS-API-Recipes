@@ -5,9 +5,8 @@
 <dict>
     <key>com.apple.developer.associated-domains</key>
     <array>
-        <string>applinks:disqus.com</string>
-        <string>applinks:*.disqus.com</string>
-        <string>webcredentials:disqus.com</string>
+        <string>applinks:YOURSHORTNAME.disqus.com</string>
+        <string>webcredentials:YOUR_SHORTNAME.disqus.com/</string>
     </array>
 </dict>
 </plist>
