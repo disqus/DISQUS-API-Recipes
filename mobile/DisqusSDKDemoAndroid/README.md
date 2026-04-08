@@ -19,18 +19,26 @@ disqusThreadUrl=https://yoursite.com/some-article
 - `disqusThreadUrl` — the canonical URL of a page registered as a Disqus thread; the demo
   embeds this single thread on every article detail screen
 
-### 2. Register OAuth callback
+### 2. Update AndroidManifest
+
+Open `mobile/DisqusSDKDemoAndroid/app/src/main/AndroidManifest.xml` and replace `YOUR_SHORTNAME` with your Disqus forum's shortname
+
+### 3. Follow installation instructions to install the Disqus Android SDK
+
+Follow the instructions from the Disqus Android SDK to add the SDK to this project. If you do not have access to these instructions, then please reach out to your Disqus representative or Disqus support.
+
+### 4. Register OAuth callback
 
 The demo uses App Links — no custom scheme registration is needed. Ensure Disqus has configured `assetlinks.json` for your package name and SHA-256 fingerprint so the OS can verify the `https://YOURSHORTNAME.disqus.com/mobileauth/success` App Link at install time.
 
-### 3. Open in Android Studio
+### 5. Open in Android Studio
 
 Open the `mobile/DisqusSDKDemoAndroid/` folder (not the repo root) in Android Studio Hedgehog or later.
 
 If the Gradle wrapper JAR is missing, Android Studio will offer to download it automatically,
 or run `gradle wrapper --gradle-version 8.4` from this directory.
 
-### 4. Run
+### 6. Run
 
 Build and run the `:app` module on an emulator (API 26+) or physical device.
 
@@ -51,12 +59,8 @@ Build and run the `:app` module on an emulator (API 26+) or physical device.
 ```
 DisqusSDKDemoAndroid/
 ├── app/                        # Demo application module
-├── disqus-sdk/                 # Library wrapper; source redirected to ../../android/
+├── libs/                       # Should contain the Disqus Android SDK `.aar` file
 ├── build.gradle.kts            # Root build (AGP 8.2.2, Kotlin 1.9.23)
 ├── settings.gradle.kts
 └── gradle.properties           # Credentials (do not commit real values)
 ```
-
-The `disqus-sdk` module contains no Kotlin files of its own — its `sourceSets` configuration
-points directly at the SDK source in `android/src/main/java`, so the demo always builds
-against the live source tree without duplication.

@@ -16,4 +16,3 @@ dependencyResolutionManagement {
 
 rootProject.name = "DisqusSDKDemoAndroid"
 include(":app")
-include(":disqus-sdk")
