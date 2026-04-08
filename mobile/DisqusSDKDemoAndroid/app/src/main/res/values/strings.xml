@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Disqus SDK Demo Android</string>
+    <string name="menu_login">Login</string>
+    <string name="menu_logout_format">Logout (%1$s)</string>
+    <string name="comment_count_format">%1$d comments</string>
+</resources>
