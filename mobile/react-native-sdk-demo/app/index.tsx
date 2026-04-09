@@ -15,10 +15,15 @@ export default function WebViewScreen() {
     background_color: '#FFFFFF',
   };
 
+  const { commentCounts, isLoading: isCommentCountsLoading } = useCommentCounts(params.shortname, { identifiers: [params.identifier] });
+
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.scrollContent}>
       <View style={styles.headerContainer}>
         <Text style={styles.headerText}>Disqus React Native Demo</Text>
+        <Text>
+          {isCommentCountsLoading ? '...' : `${commentCounts[params.identifier] || 0} Comments`}
+        </Text>
       </View>
 
       <View style={styles.footerContainer}>
@@ -73,7 +78,7 @@ const styles = StyleSheet.create({
     marginBottom: 6,
   },
   webviewContainer: {
-    height: 800,
+    height: 600,
     position: 'relative',
   },
   footerContainer: {
