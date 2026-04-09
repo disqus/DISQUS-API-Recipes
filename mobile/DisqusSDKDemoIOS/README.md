@@ -8,13 +8,13 @@ iOS demo app showing Disqus SDK integration: article list with comment counts an
 
 2. **Set up your entitlements file** - open `mobile/DisqusSDKDemoIOS/DisqusSDKDemoIOS/DisqusSDKDemoIOS.entitlements` and replace `YOUR_SHORTNAME` with your Disqus shortname.
 
-2. **Install Disqus iOS SDK** - Follow the instructions to add the Disqus iOS SDK to this project. If you do not have access to these instructions, then please reach out to your Disqus representative or Disqus support.
+3. **Install Disqus iOS SDK** - Follow the instructions to add the Disqus iOS SDK to this project. If you do not have access to these instructions, then please reach out to your Disqus representative or Disqus support.
 
-3. **Open in Xcode** — open `DisqusSDKDemoIOS.xcodeproj`.
+4. **Open in Xcode** — open `DisqusSDKDemoIOS.xcodeproj`.
 
-3. **Select a simulator** — choose an iPhone simulator running iOS 17.4 or later.
+5. **Select a simulator** — choose an iPhone simulator running iOS 17.4 or later.
 
-4. **Build and run** — press ⌘R.
+6. **Build and run** — press ⌘R.
 
 ## Features
 
