@@ -1,0 +1,50 @@
+{
+  "expo": {
+    "name": "disqus-sdk-react-native-demo",
+    "slug": "disqus-sdk-react-native-demo",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/disqus-icon.png",
+    "scheme": "myapp",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.example.disqussdkreactnativedemo",
+      "appleTeamId": "YOUR_APPLE_TEAM_ID",
+      "associatedDomains": [
+        "applinks:YOUR_SHORTNAME.disqus.com",
+        "webcredentials:YOUR_SHORTNAME.disqus.com"
+      ],
+      "infoPlist": {
+        "com.apple.developer.associated-domains-debug": true
+      }
+    },
+    "android": {
+      "package": "com.example.disqussdkreactnativedemo",
+      "intentFilters": [
+        {
+          "action": "VIEW",
+          "autoVerify": true,
+          "data": [
+            {
+              "scheme": "https",
+              "host": "YOUR_SHORTNAME.disqus.com",
+              "pathPrefix": "/mobileauth/success"
+            }
+          ],
+          "category": ["BROWSABLE", "DEFAULT"]
+        }
+      ]
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "single",
+      "favicon": "./assets/disqus-icon.png"
+    },
+    "plugins": ["expo-router", "expo-font", "expo-web-browser"],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}
